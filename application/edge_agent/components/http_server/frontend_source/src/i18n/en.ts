@@ -62,6 +62,17 @@ export const en = {
   wifiValidationPasswordLength:
     'Wi-Fi password must be empty or at least 8 characters long.',
 
+  apName: 'AP SSID',
+  apPassword: 'AP Password',
+  apNameHint: 'Current: {ssid}. Leave empty to keep default name. Changes apply after restart.',
+  apPasswordHint: 'Leave empty for open AP. Must be at least 8 characters if set.',
+  apValidationNameRequired: 'AP Name is required.',
+  apValidationPasswordLength:
+    'AP password must be empty or at least 8 characters long.',
+  apBehavior: 'AP Behavior',
+  apBehaviorKeep: 'Keep On',
+  apBehaviorCloseOnSta: 'Turn Off After Wi-Fi Connects',
+
   sectionStatusNetwork: 'Network',
   sectionStatusStorage: 'Storage',
   sysInfoWifi: 'Wi-Fi',
@@ -162,6 +173,8 @@ export const en = {
     'If set, ESP-Claw can search online. Tip: Built-in weather skill also relies on online search.',
   searchBraveKey: 'Brave Search API Key',
   searchTavilyKey: 'Tavily API Key',
+  searchHttpAllowlist: 'HTTP allowlist (domains/IP, comma-separated)',
+  searchHttpAllowlistPlaceholder: 'api.example.com,*.example.org,203.0.113.10',
 
   sectionCapabilities: 'Capability Groups',
   capabilitiesDescription:

@@ -59,6 +59,16 @@ export const zhCn: Dict = {
   wifiValidationSsidRequired: 'Wi-Fi 名称不能为空。',
   wifiValidationPasswordLength: 'Wi-Fi 密码要么留空，要么至少 8 个字符。',
 
+  apName: 'AP 名称 (SSID)',
+  apPassword: 'AP 密码',
+  apNameHint: '当前：{ssid}。留空使用默认名称。修改后需重启生效。',
+  apPasswordHint: '留空则为开放热点。如设置密码，长度至少 8 个字符。',
+  apValidationNameRequired: 'AP 名称不能为空。',
+  apValidationPasswordLength: 'AP 密码需留空或至少 8 个字符。',
+  apBehavior: 'AP 行为',
+  apBehaviorKeep: '保持开启',
+  apBehaviorCloseOnSta: '连接 Wi-Fi 后关闭',
+
   sectionStatusNetwork: '网络信息',
   sectionStatusStorage: '储存信息',
   sysInfoWifi: 'Wi-Fi',
@@ -156,6 +166,8 @@ export const zhCn: Dict = {
     '如填写，ESP-Claw 可在运行中检索在线资源。提示：系统自带的天气 Skill 也依赖在线搜索功能。',
   searchBraveKey: 'Brave Search API Key',
   searchTavilyKey: 'Tavily API Key',
+  searchHttpAllowlist: 'HTTP 白名单（域名/IP，逗号分隔）',
+  searchHttpAllowlistPlaceholder: 'api.example.com,*.example.org,203.0.113.10',
 
   sectionCapabilities: 'Capability Group',
   capabilitiesDescription:

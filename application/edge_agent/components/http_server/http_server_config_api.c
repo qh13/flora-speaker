@@ -38,6 +38,9 @@ typedef struct {
 static const config_field_def_t CONFIG_FIELDS[] = {
     CONFIG_FIELD("wifi",         wifi_ssid),
     CONFIG_FIELD("wifi",         wifi_password),
+    CONFIG_FIELD("wifi",         ap_ssid),
+    CONFIG_FIELD("wifi",         ap_password),
+    CONFIG_FIELD("wifi",         ap_behavior),
 
     CONFIG_FIELD("llm",          llm_api_key),
     CONFIG_FIELD("llm",          llm_backend_type),
@@ -64,6 +67,7 @@ static const config_field_def_t CONFIG_FIELDS[] = {
 
     CONFIG_FIELD("search",       search_brave_key),
     CONFIG_FIELD("search",       search_tavily_key),
+    CONFIG_FIELD("search",       search_http_allowlist),
 
     CONFIG_FIELD("capabilities", enabled_cap_groups),
     CONFIG_FIELD("capabilities", llm_visible_cap_groups),
@@ -163,6 +167,11 @@ static bool is_boolean_string(const char *value)
             strcmp(value, "false") == 0 ||
             strcmp(value, "1") == 0 ||
             strcmp(value, "0") == 0);
+}
+
+static esp_err_t validate_wifi_config_fields(const app_config_t *config, const char **message)
+{
+    return app_config_validate_wifi(config, message);
 }
 
 static esp_err_t emit_config(httpd_req_t *req,
@@ -342,6 +351,13 @@ static esp_err_t config_post_handler(httpd_req_t *req)
         free(config);
         return httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST,
                                    "Request did not contain any recognised fields");
+    }
+
+    const char *wifi_config_error = NULL;
+    err = validate_wifi_config_fields(config, &wifi_config_error);
+    if (err != ESP_OK) {
+        free(config);
+        return httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, wifi_config_error);
     }
 
     err = ctx->services.save_config(config);
