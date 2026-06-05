@@ -26,7 +26,5 @@ idf_component_register(
         bt
         cap_lua
         esp_timer
-        freertos
-        georgik__lua
         nvs_flash
 )
